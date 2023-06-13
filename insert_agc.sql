@@ -17,7 +17,7 @@ horraire_ouv varchar(255) default 'N/A',
 );
 
 bulk insert stg_agc
-from 'C:\Users\DELL\Desktop\code_PFE\data\agc.csv'
+from 'C:\Users\DELL\Desktop\AXA_DW_ETL\data\agc.csv' 
 WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 
 -- Transformation: separer la commune ou wilaya du nom de l'agence
@@ -25,6 +25,7 @@ WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 alter table stg_agc 
 add wilaya_commune varchar(128), 
 	type_agence varchar(10);
+go
 
 update stg_agc
 set wilaya_commune = case when CHARINDEX('AGC', nom_agc) > 0 then SUBSTRING(nom_agc, charindex('AGC', nom_agc) + 4, LEN(nom_agc) - charindex('AGC', nom_agc) - 3)  
@@ -50,6 +51,6 @@ date_ouverture,
 coord_gps
 from stg_agc
 
---select * from ETL_TEST.dbo.stg_agc;
+--select * from dim_agence;
 
 

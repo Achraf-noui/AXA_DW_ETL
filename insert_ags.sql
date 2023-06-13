@@ -1,6 +1,5 @@
------------------- TABLE AGC ------------------
-
 -- creation de la table AGS ---------
+
 DROP TABLE IF EXISTS stg_ags;
 
 create table stg_ags(
@@ -19,10 +18,8 @@ horraire_ouv varchar(255),
 
 -- Remplissage a partir du fichier csv -------
 
-truncate table stg_ags;
-
 bulk insert stg_ags
-from 'C:\Users\DELL\Desktop\code_PFE\data\ags.csv'
+from 'C:\Users\DELL\Desktop\AXA_DW_ETL\data\ags.csv'
 WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 
 -- Transformation: separer la commune ou wilaya du nom de l'agence
@@ -30,6 +27,7 @@ WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 alter table stg_ags 
 add wilaya_commune varchar(128), 
 	type_agence varchar(10);
+go
 
 update stg_ags
 set nom_agence = case when CHARINDEX('(', nom_agence) > 0 then SUBSTRING(nom_agence, 1, charindex('(', nom_agence) - 1)
@@ -39,8 +37,6 @@ set nom_agence = case when CHARINDEX('(', nom_agence) > 0 then SUBSTRING(nom_age
 	type_agence = 'AGS';
 
 -- insertion du resultat dans la dimension agence
-
-truncate table dim_agence;
 
 insert into dim_agence
 (
@@ -61,5 +57,5 @@ date_ouverture,
 coord_gps
 from stg_ags
 
-select * from dim_agence;
+--select * from dim_agence;
 
