@@ -1,4 +1,5 @@
 --------- create risque staging table ----------
+
 drop table if exists stg_risque;
 
 create table stg_risque(
@@ -35,7 +36,7 @@ select * from stg_risque;
 
 alter table stg_risque_auto 
 add risque_auto_id int;
-
+go
 -- same vehicle must have same surrogate in both risque and risque_auto (supertype and subtype dimension)
 -- achieved based on the natural key of the vehicle
 

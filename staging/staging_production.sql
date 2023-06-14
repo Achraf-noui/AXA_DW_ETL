@@ -26,10 +26,13 @@ situation varchar(128) default 'N/A'
 
 
 bulk insert stg_production
-from 'C:\Users\DELL\Desktop\code_PFE\data\Production.csv'
+from 'C:\Users\DELL\Desktop\AXA_DW_ETL\data\Production.csv'
 WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 
---select type_affaire, date_effective, id_vehicule, id_assure, id_condcuteur, montant, valeur_neuf from stg_production where id_assure = 1531;
+
+delete from stg_production where id_agence not in (select code_agence from dim_agence);
+
+--select * from stg_production_test
 
 
 

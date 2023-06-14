@@ -48,4 +48,58 @@ BEGIN
     SET @StartDate = DATEADD(DAY, 1, @StartDate);
 END
 
+--select * from dim_date;
+
+-- Date echeance table ===============================
+
+drop table if exists dim_date_effective;
+
+create table dim_date_effective(
+date_eff_id INT PRIMARY KEY, 
+date_eff DATE, 
+annee_eff INT, 
+trimestre_eff INT,
+mois_eff INT,
+jour_eff INT,
+jour_semaine_eff INT,
+lib_jour_eff NVARCHAR(20),
+jour_mois_eff int,
+jour_annee_eff int,
+semaine_annee_eff int,
+lib_mois_eff NVARCHAR(20),
+lib_trimestre_eff NVARCHAR(20),
+IsWeekend_eff varchar(15)
+);
+
+insert into dim_date_effective
 select * from dim_date;
+
+select * from dim_date_effective;
+
+-- Date echeance table ===============================
+
+drop table if exists dim_date_echeance;
+
+create table dim_date_echeance(
+date_ech_id INT PRIMARY KEY, 
+date_ech DATE, 
+annee_ech INT, 
+trimestre_ech INT,
+mois_ech INT,
+jour_ech INT,
+jour_semaine_ech INT,
+lib_jour_ech NVARCHAR(20),
+jour_mois_ech int,
+jour_annee_ech int,
+semaine_annee_ech int,
+lib_mois_ech NVARCHAR(20),
+lib_trimestre_ech NVARCHAR(20),
+IsWeekend_ech varchar(15)
+);
+
+insert into dim_date_echeance
+select * from dim_date;
+
+select * from dim_date_echeance;
+
+select * from fait_transac_production

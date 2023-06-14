@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\loading",
+    "\\staging"
   ],
-  "SelectedNode": "\\control_script.sql",
+  "SelectedNode": "\\loading\\load_fait_transac_prod.sql",
   "PreviewInSolutionExplorer": false
 }
