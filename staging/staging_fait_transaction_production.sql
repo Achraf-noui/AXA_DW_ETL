@@ -12,11 +12,12 @@ reduction float
 );
 
 --select * from stg_fait_transac_production;
+truncate table stg_fait_transac_production;
 
 insert into stg_fait_transac_production
-select
-dech.date_ech_id,
+select 
 deff.date_eff_id,
+dech.date_ech_id,
 dag.agence_id,
 dp.pack_id,
 dr.risque_id,
@@ -24,12 +25,13 @@ dtt.type_transaction_id,
 pr.montant,
 pr.reduction
 from stg_production pr
-inner join dim_agence dag on pr.id_agence = dag.code_agence
-inner join dim_pack dp on pr.id_pack = dp.code_pack
-inner join dim_risque dr on pr.id_vehicule = dr.code_risque
-inner join dim_type_transaction dtt on pr.id_type_affaire = dtt.code_type_transaction
-inner join dim_date_echeance dech on pr.date_echeance = dech.date_ech
-inner join dim_date_effective deff on pr.date_effective = deff.date_eff
+inner join dim_agence dag on dag.code_agence = pr.id_agence
+inner join dim_pack dp on dp.code_pack = pr.id_pack
+inner join dim_risque dr on dr.code_risque = pr.id_vehicule
+inner join dim_type_transaction dtt on dtt.code_type_transaction = pr.id_type_affaire
+inner join dim_date_effective deff on deff.date_eff = pr.date_effective
+inner join dim_date_echeance dech on dech.date_ech = pr.date_echeance
 
 select count(*) from stg_fait_transac_production
+select * from stg_fait_transac_production
 

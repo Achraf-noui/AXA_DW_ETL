@@ -42,25 +42,6 @@ set nom_agence = case when CHARINDEX('(', nom_agence) > 0 then SUBSTRING(nom_age
 
 -- insertion du resultat dans la dimension agence
 
-insert into dim_agence
-(
-code_agence,
-nom_agence,
-type_agence,
-wilaya_commune,
-region,
-date_ouverture,
-coord_gps
-)
-select code_agence, 
-nom_agence, 
-type_agence, 
-wilaya_commune, 
-region_agence, 
-date_ouverture, 
-coord_gps
-from stg_ags;
-
 --==================================================
 
 ------------------ Staging agence AGC type ------------------
@@ -137,6 +118,7 @@ update stg_aga
 set type_agence = 'AGA';
 
 select * from stg_aga;
+
 
 
 

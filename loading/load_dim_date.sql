@@ -100,6 +100,5 @@ IsWeekend_ech varchar(15)
 insert into dim_date_echeance
 select * from dim_date;
 
-select * from dim_date_echeance;
+select count(*) from dim_date_effective;
 
-select * from fait_transac_production

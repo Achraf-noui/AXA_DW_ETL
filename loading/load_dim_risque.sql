@@ -11,11 +11,13 @@ type_risque varchar(128)
 constraint pk_dim_risque primary key (risque_id)
 );
 
+truncate table dim_risque;
+
 insert into dim_risque
 select risque_id, code_risque, type_risque
 from stg_risque;
 
-select * from dim_risque;
+select count(*) from dim_risque;
 
 --=======================================
 --Insertion risque auto subtype dimension
@@ -38,4 +40,4 @@ insert into dim_risque_auto
 select id_vehicule, marque, modele, annee_circ, valeur_neuf, valeur_venale
 from stg_risque_auto;
 
-select * from dim_risque_auto
+select count(*) from dim_risque_auto

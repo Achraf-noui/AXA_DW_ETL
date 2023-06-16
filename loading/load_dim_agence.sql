@@ -7,8 +7,8 @@ nom_agence varchar(255),
 type_agence varchar(255) default 'N/A',
 wilaya_commune varchar(127) default 'N/A',
 region varchar(128) default 'N/A',
-date_ouverture varchar(128),
-coord_gps varchar(255),
+date_ouverture varchar(128) default 'N/A',
+coord_gps varchar(255) default 'N/A',
 PRIMARY KEY (agence_id)
 );
 
@@ -78,5 +78,15 @@ horaire_ouverture,
 coord_gps
 from stg_aga;
 
-select * from dim_agence;
+select count(*) from dim_agence;
 
+--select count(distinct (id_agence )), 'inconnu' from stg_production where id_agence not in (select code_agence from dim_agence);
+
+insert into dim_agence (code_agence, nom_agence)
+select distinct (id_agence ), 'inconnu'
+from stg_production where id_agence not in (select code_agence from dim_agence);
+go
+
+select count(*) from dim_agence;
+
+select * from dim_agence
