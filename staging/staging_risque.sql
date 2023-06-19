@@ -50,3 +50,5 @@ drop column id_proprietaire;
 --select * from stg_risque_auto;
 
 select * from stg_risque_auto;
+
+select count(distinct id_vehicule) from stg_production

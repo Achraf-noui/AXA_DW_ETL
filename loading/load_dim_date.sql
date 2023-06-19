@@ -100,5 +100,34 @@ IsWeekend_ech varchar(15)
 insert into dim_date_echeance
 select * from dim_date;
 
-select count(*) from dim_date_effective;
+select count(*) from dim_date_echeance;
+
+-- Date souscription table ===============================
+
+drop table if exists dim_date_souscription;
+
+create table dim_date_souscription(
+date_sous_id INT PRIMARY KEY, 
+date_sous DATE, 
+annee_sous INT, 
+trimestre_sous INT,
+mois_sous INT,
+jour_sous INT,
+jour_semaine_sous INT,
+lib_jour_sous NVARCHAR(20),
+jour_mois_sous int,
+jour_annee_sous int,
+semaine_annee_sous int,
+lib_mois_sous NVARCHAR(20),
+lib_trimestre_sous NVARCHAR(20),
+IsWeekend_sous varchar(15)
+);
+
+insert into dim_date_souscription
+select * from dim_date;
+
+select count(*) from dim_date_souscription;
+
+
+
 

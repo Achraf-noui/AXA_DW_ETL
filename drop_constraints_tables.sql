@@ -1,6 +1,7 @@
 IF OBJECT_ID('fait_transac_production', 'U') IS NOT NULL
 BEGIN
 
+ALTER TABLE fait_transac_production DROP CONSTRAINT if exists fk_dim_date_sous;
 ALTER TABLE fait_transac_production DROP CONSTRAINT if exists fk_dim_dateEff;
 ALTER TABLE fait_transac_production DROP CONSTRAINT if exists fk_dim_date_ech;
 ALTER TABLE fait_transac_production DROP CONSTRAINT if exists fk_dim_agence;
@@ -12,6 +13,7 @@ END
 ELSE
 BEGIN
 
+drop table if exists dim_date_souscription;
 drop table if exists dim_date_effective;
 drop table if exists dim_date_echeance;
 drop table if exists dim_date;
