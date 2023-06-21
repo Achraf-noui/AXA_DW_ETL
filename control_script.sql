@@ -5,7 +5,7 @@
 :r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\drop_constraints_tables.sql
 
 -- Executes staging scripts ====================================
-
+:r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\staging\staging_client.sql
 :r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\staging\staging_agence.sql
 :r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\staging\staging_pack.sql
 :r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\staging\staging_production.sql
@@ -15,6 +15,7 @@
 
 -- Loading data into dimensions scripts ======================================
 
+:r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\loading\load_dim_client.sql
 :r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\loading\load_dim_date.sql
 :r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\loading\load_dim_agence.sql
 :r C:\Users\DELL\Desktop\AXA_DW_ETL\scripts\loading\load_dim_pack.sql

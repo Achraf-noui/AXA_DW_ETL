@@ -13,6 +13,7 @@ PRIMARY KEY (agence_id)
 );
 
 --select * from dim_agence;
+ALTER TABLE fait_transac_production DROP CONSTRAINT if exists fk_dim_agence;
 truncate table dim_agence;
 
 -- Insert from staging AGS =================
@@ -88,5 +89,3 @@ from stg_production where id_agence not in (select code_agence from dim_agence);
 go
 
 select count(*) from dim_agence;
-
-select * from dim_agence

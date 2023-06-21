@@ -1,7 +1,7 @@
 drop table if exists stg_production;
 
 create table stg_production(
-id_contrat int,
+id_contrat varchar(20),
 n_version int,
 id_type_affaire int default -1, 
 type_affaire varchar(255) default 'non-specifié',
@@ -33,9 +33,31 @@ WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 
 select count(*) from stg_production;
 
---select count(*) from stg_production where id_type_affaire = -1;
 
---select id_type_affaire from stg_production where id_type_affaire not in (select code_type_transaction from dim_type_transaction)
+-- Production MRP =============================
 
+drop table if exists stg_production_mrp;
 
+create table stg_production_mrp(
+num_police varchar(10),
+n_version int,
+type_affaire varchar(255) default 'non-specifié',
+situation varchar(20) default 'N/A',
+date_effet_mouv varchar(10) default 'N/A',
+date_effet_contrat varchar(10) default 'N/A',
+date_echeance_contrat varchar(10) default 'N/A',
+produit varchar(5) default 'N/A',
+date_deb_im varchar(10) default 'N/A',
+id_agence varchar(20),
+lib_agence varchar(128),
+canal varchar(30),
+CA varchar(20),
+[Date] varchar(10),
+);
+
+bulk insert stg_production_mrp
+from 'C:\Users\DELL\Desktop\AXA_DW_ETL\data\BDD_MRP.csv'
+WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
+
+select count(*) from stg_production_mrp;
 
