@@ -1,3 +1,6 @@
+USE AXA_DW
+go
+
 drop table if exists stg_fait_transac_production;
 
 create table stg_fait_transac_production(
@@ -13,10 +16,8 @@ contrat_id varchar(20),
 montant float,
 reduction float
 );
-go
 
 --select * from stg_fait_transac_production;
-truncate table stg_fait_transac_production;
 
 insert into stg_fait_transac_production
 select 
@@ -41,5 +42,5 @@ inner join dim_date_souscription dsous on dsous.date_sous = pr.date_souscription
 inner join dim_date_effective deff on deff.date_eff = pr.date_effective
 inner join dim_date_echeance dech on dech.date_ech = pr.date_echeance
 
-select count(*) from stg_production
-select * from stg_fait_transac_production
+select count(*) from stg_fait_transac_production
+

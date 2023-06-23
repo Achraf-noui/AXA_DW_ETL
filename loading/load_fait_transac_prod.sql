@@ -1,3 +1,6 @@
+USE AXA_DW
+go
+
 drop table if exists fait_transac_production;
 
 create table fait_transac_production(
@@ -14,9 +17,7 @@ contrat_id varchar(20),
 montant float,
 reduction float
 );
-go
 
-truncate table fait_transac_production
 
 -- load fact table fait_transac_prodution  ===================
 
@@ -35,7 +36,7 @@ constraint fk_dim_pack foreign key (pack_sk) references dim_pack (pack_id) on de
 constraint fk_dim_risque foreign key (risque_sk) references dim_risque (risque_id) on delete cascade,
 constraint fk_dim_type_transaction foreign key (type_transaction_sk) references dim_type_transaction (type_transaction_id) on delete cascade
 ;
-
+go
 --CREATE PARTITION FUNCTION [myDateRange] (datetime)  
 --AS RANGE RIGHT FOR VALUES ('2022-02-01', '2022-03-01', '2022-04-01',  
 --               '2022-05-01', '2022-06-01', '2022-07-01', '2022-08-01',   

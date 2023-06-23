@@ -1,3 +1,6 @@
+USE AXA_DW
+go
+
 drop table if exists dim_client;
 
 create table dim_client(
@@ -12,7 +15,6 @@ wilaya varchar(50),
 permis varchar(5),
 date_obtention date
 );
-go
 
 insert into dim_client
 select 

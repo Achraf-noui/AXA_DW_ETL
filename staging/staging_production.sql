@@ -1,3 +1,5 @@
+USE AXA_DW;
+
 drop table if exists stg_production;
 
 create table stg_production(

@@ -1,3 +1,6 @@
+USE AXA_DW
+go
+
 drop table if exists stg_client;
 
 create table stg_client(

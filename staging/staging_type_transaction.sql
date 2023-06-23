@@ -1,3 +1,5 @@
+USE AXA_DW
+
 drop table if exists stg_type_transaction;
 
 create table stg_type_transaction(

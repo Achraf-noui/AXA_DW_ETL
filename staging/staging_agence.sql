@@ -1,3 +1,4 @@
+USE AXA_DW
 --============================================
 
 --Staging agence AGS type
@@ -31,7 +32,6 @@ WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 alter table stg_ags 
 add wilaya_commune varchar(128), 
 	type_agence varchar(10);
-go
 
 update stg_ags
 set nom_agence = case when CHARINDEX('(', nom_agence) > 0 then SUBSTRING(nom_agence, 1, charindex('(', nom_agence) - 1)
@@ -39,7 +39,7 @@ set nom_agence = case when CHARINDEX('(', nom_agence) > 0 then SUBSTRING(nom_age
 	wilaya_commune = case when CHARINDEX('(', nom_agence) > 0 then SUBSTRING(nom_agence, charindex('(', nom_agence) + 1, LEN(nom_agence) - charindex('(', nom_agence) - 1)
 	                 else 'N/A' end,
 	type_agence = 'AGS';
-
+go
 -- insertion du resultat dans la dimension agence
 
 --==================================================
@@ -73,7 +73,6 @@ WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 alter table stg_agc 
 add wilaya_commune varchar(128), 
 	type_agence varchar(10);
-go
 
 update stg_agc
 set wilaya_commune = case when CHARINDEX('AGC', nom_agc) > 0 then SUBSTRING(nom_agc, charindex('AGC', nom_agc) + 4, LEN(nom_agc) - charindex('AGC', nom_agc) - 3)  
@@ -82,8 +81,8 @@ set wilaya_commune = case when CHARINDEX('AGC', nom_agc) > 0 then SUBSTRING(nom_
 
 update stg_agc
 set code_agence = SUBSTRING(code_agence, charindex('AGC', code_agence) + 4, 5)
+go
 
-select * from stg_agc;
 
 --======================================
 -- STAGING AGA 
@@ -112,12 +111,10 @@ WITH (FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 -- Transformation: separer la commune ou wilaya du nom de l'agence
 
 alter table stg_aga add type_agence varchar(10);
-go
 
 update stg_aga
 set type_agence = 'AGA';
-
-select * from stg_aga;
+go
 
 
 

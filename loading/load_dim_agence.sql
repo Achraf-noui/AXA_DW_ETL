@@ -13,8 +13,6 @@ PRIMARY KEY (agence_id)
 );
 
 --select * from dim_agence;
-ALTER TABLE fait_transac_production DROP CONSTRAINT if exists fk_dim_agence;
-truncate table dim_agence;
 
 -- Insert from staging AGS =================
 
@@ -79,7 +77,6 @@ horaire_ouverture,
 coord_gps
 from stg_aga;
 
-select count(*) from dim_agence;
 
 --select count(distinct (id_agence )), 'inconnu' from stg_production where id_agence not in (select code_agence from dim_agence);
 

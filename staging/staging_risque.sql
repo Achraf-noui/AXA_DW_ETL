@@ -1,4 +1,6 @@
 --------- create risque staging table ----------
+USE AXA_DW
+go
 
 drop table if exists stg_risque;
 
@@ -32,11 +34,10 @@ with ( FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 insert into stg_risque (code_risque, type_risque)
 select id_vehicule, 'Auto' from stg_risque_auto;
 
-select * from stg_risque;
 
 alter table stg_risque_auto 
 add risque_auto_id int;
-go
+
 -- same vehicle must have same surrogate in both risque and risque_auto (supertype and subtype dimension)
 -- achieved based on the natural key of the vehicle
 
@@ -49,6 +50,5 @@ drop column id_proprietaire;
 
 --select * from stg_risque_auto;
 
-select * from stg_risque_auto;
-
 select count(distinct id_vehicule) from stg_production
+go

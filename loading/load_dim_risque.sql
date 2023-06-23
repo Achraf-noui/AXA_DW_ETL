@@ -1,3 +1,5 @@
+USE AXA_DW
+go
 --=======================================
 --Insertion risque supertype dimension
 --=======================================

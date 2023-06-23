@@ -1,3 +1,5 @@
+USE AXA_DW;
+
 drop table if exists stg_pack;
 
 create table stg_pack(
@@ -10,5 +12,4 @@ bulk insert stg_pack
 from 'C:\Users\DELL\Desktop\AXA_DW_ETL\data\packs.csv'
 with (FIELDTERMINATOR = ';', FIRSTROW = 2, ROWTERMINATOR = '\n');
 
-select * from stg_pack;
 

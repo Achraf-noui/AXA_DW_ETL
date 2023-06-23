@@ -1,3 +1,6 @@
+USE AXA_DW
+go
+
 SET LANGUAGE 'French';
 
 drop table if exists dim_date;
@@ -74,7 +77,6 @@ IsWeekend_eff varchar(15)
 insert into dim_date_effective
 select * from dim_date;
 
-select * from dim_date_effective;
 
 -- Date echeance table ===============================
 
@@ -100,7 +102,6 @@ IsWeekend_ech varchar(15)
 insert into dim_date_echeance
 select * from dim_date;
 
-select count(*) from dim_date_echeance;
 
 -- Date souscription table ===============================
 
