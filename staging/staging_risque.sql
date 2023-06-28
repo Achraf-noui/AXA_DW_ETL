@@ -34,6 +34,8 @@ with ( FIELDTERMINATOR = ';', FIRSTROW=2, ROWTERMINATOR = '\n');
 insert into stg_risque (code_risque, type_risque)
 select id_vehicule, 'Auto' from stg_risque_auto;
 
+insert into stg_risque values(-1, 'MRP')
+
 
 alter table stg_risque_auto 
 add risque_auto_id int;

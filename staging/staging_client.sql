@@ -21,7 +21,10 @@ bulk insert stg_client
 from 'C:\Users\DELL\Desktop\AXA_DW_ETL\data\personnes.csv'
 with (FIELDTERMINATOR = ';', FIRSTROW = 2, ROWTERMINATOR = '\n');
 
-select count(*) from stg_client
+insert into stg_client 
+values(-1, 'client MRP', 'N/A', 'N/A', '2001-01-01', 'N/A', 'N/A', 'N/A', -1, 'N/A', '2001-01-01') 
+
+select * from stg_client
 
 
 

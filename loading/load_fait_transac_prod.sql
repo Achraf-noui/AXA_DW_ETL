@@ -37,7 +37,5 @@ constraint fk_dim_risque foreign key (risque_sk) references dim_risque (risque_i
 constraint fk_dim_type_transaction foreign key (type_transaction_sk) references dim_type_transaction (type_transaction_id) on delete cascade
 ;
 go
---CREATE PARTITION FUNCTION [myDateRange] (datetime)  
---AS RANGE RIGHT FOR VALUES ('2022-02-01', '2022-03-01', '2022-04-01',  
---               '2022-05-01', '2022-06-01', '2022-07-01', '2022-08-01',   
---               '2022-09-01', '2022-10-01', '2022-11-01', '2022-12-01'); 
+
+

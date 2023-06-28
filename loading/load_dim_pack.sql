@@ -8,18 +8,17 @@ create table dim_pack(
 pack_id int identity (1,1),
 code_pack int,
 libelle_pack varchar(20),
-[description] varchar(255)
+produit varchar(255)
 constraint pk_dim_pack primary key (pack_id)
 );
 
 
 --truncate table dim_pack;
 
-insert into dim_pack (code_pack, libelle_pack, [description])
-select code_pack, lib_pack, [description] 
+insert into dim_pack (code_pack, libelle_pack, produit)
+select code_pack, lib_pack, produit
 from stg_pack;
 
 select count(*) from dim_pack;
-go
 
 
